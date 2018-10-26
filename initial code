@@ -2,7 +2,7 @@
 #include<LiquidCrystal.h>
 #include<EEPROM.h>
 
-LiquidCrystal liquid_crystal_display(9,8,7,6,5,4,);
+LiquidCrystal liquid_crystal_display(9,8,7,6,5,4);
 char password[4];
 char initial_password[4],new_password[4];
 int i=0;
