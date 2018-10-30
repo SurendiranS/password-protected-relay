@@ -28,16 +28,43 @@ Keypad keypad_key = Keypad( makeKeymap(hexaKeys), row_pins, column_pins, rows, c
 void setup()
 {
   analogWrite(6, 20);
-  pinMode(relay_pin, OUTPUT);
   liquid_crystal_display.begin(16, 2);
   liquid_crystal_display.setCursor(0, 1);
-  liquid_crystal_display.print("Initializing");
+  liquid_crystal_display.print("  Initializing");
+  delay(1500);
+  pinMode(relay_pin, OUTPUT);
+  digitalWrite(relay_pin, HIGH);
+  liquid_crystal_display.clear();
+  liquid_crystal_display.setCursor(0, 0);
+  liquid_crystal_display.print("MINI PROJECT");
+  liquid_crystal_display.setCursor(0, 2);
+  liquid_crystal_display.print("Done By");
   delay(2000);
   liquid_crystal_display.clear();
+  liquid_crystal_display.setCursor(0, 0);
+  // set the display to automatically scroll:
+  // print from 0 to 9:
+  liquid_crystal_display.print ("-SRIDHARAN S  SURENDRIAN S  VARSHINI V R");
+  delay(500);  // turn off automatic scrolling
+  for (int positionCounter = 0; positionCounter < 25; positionCounter++) {
+    // scroll one position right:
+    liquid_crystal_display.scrollDisplayLeft();
+    // wait a bit:
+    delay(1000);
+  }
+  liquid_crystal_display.clear();
+
+
   liquid_crystal_display.print("Enter Password");
   liquid_crystal_display.setCursor(0, 1);
   initialpassword();
-  digitalWrite(relay_pin, HIGH);
+
+
+
+
+
+
+
 }
 
 
@@ -160,5 +187,6 @@ void initialpassword() {
   for (int j = 0; j < 4; j++)
     initial_password[j] = EEPROM.read(j);
 }
+
 
 
